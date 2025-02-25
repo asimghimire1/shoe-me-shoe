@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowMeShoe - Login</title>
+    <link rel="stylesheet" href="{% static 'css/styler.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            overflow: hidden;
+            position: relative;
+        }
+        .login-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            padding: 80px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            z-index: 10;
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .title span {
+            margin: 0 5px; /* Space between letters and shoe */
+        }
+        .shoe-image {
+            width: 30px; /* Adjust the size of the shoe image */
+            height: auto;
+        }
+        .keychain {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transform-origin: top center;
+        }
+        .chain-link {
+            width: 6px;
+            height: 18px;
+            background: gray;
+            border-radius: 5px;
+        }
+        .shoe {
+            position: relative;
+            width: 80px;
+            height: 90px;
+        }
+        .background-shoes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background-shoe {
+            position: absolute;
+            width: 100px;
+            height: 110px;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        input {
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-texture">
+        <img src="{% static 'images/sbg.png' %}" alt="Background">
+    </div>
+    <canvas id="bgCanvas"></canvas>
+    <div class="background-shoes">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 10%; left: 20%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 50%; left: 70%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 80%; left: 40%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 30%; left: 10%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 70%; left: 90%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 40%; left: 90%;">
+        <img class="background-shoe" src="{% static 'images/Logo1.jpg' %}" style="top: 2%; left: 90%;">
+    </div>
+    <div class="login-container">
+        <div class="title">
+            <span>S</span>
+            <span>h</span>
+            <span>o</span>
+            <span>w</span>
+            <span>m</span>
+            <span>e</span>
+            <img class="shoe-image" src="{% static 'images/Logo1.jpg' %}" alt="shoe"> <!-- Shoe image between letters -->
+            <span>s</span>
+            <span>h</span>
+            <span>o</span>
+            <span>e</span>
+        </div>
+        <h1>Login</h1>
+        <div class="keychain">
+            <div class="chain-link"></div>
+            <div class="chain-link"></div>
+            <div class="chain-link"></div>
+            <div class="chain-link"></div>
+            <div class="chain-link"></div>
+            <img class="shoe" src="{% static 'images/Logo1.jpg' %}">
+        </div>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'signup' %}">Signup here</a>.</p>
+    </div>
+    <script>
+        gsap.to(".keychain", {
+            rotation: "+=30",
+            yoyo: true,
+            repeat: -1,
+            duration: 2,
+            ease: "sine.inOut"
+        });
+        gsap.to(".shoe", {
+            y: "random(-10, 10)",
+            x: "random(-10, 10)",
+            rotation: "random(-10, 10)",
+            duration: 0.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+        gsap.to(".background-shoe", {
+            x: "random(-150, 150)",
+            y: "random(-150, 150)",
+            rotation: "random(-60, 60)",
+            duration: 5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    </script>
+</body>
+</html>
+

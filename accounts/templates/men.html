@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  <!-- Update the path if your CSS is in a 'css' folder -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kollektif:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="background-texture">
+        <img src="{% static 'images/sbg.png' %}" alt="Background">
+    </div>
+    
+    
+    <nav>
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/Logo1.jpg' %}" alt="Logo"></a>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}" class="home">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">For</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'accounts:men' %}" class="dropdown-item">Men</a>
+                    <a href="{% url 'accounts:women' %}" class="dropdown-item">Women</a>
+                    <a href="{% url 'accounts:kids' %}" class="dropdown-item">Kids</a>
+                </div>
+            </li>
+            <li><a href="{% url 'accounts:personalize' %}">Personalize</a></li>
+            <li><a href="{% url 'accounts:sales' %}">Sales</a></li>
+            <li><a href="{% url 'accounts:trending' %}">Trendings</a></li>
+        </ul>
+        <div class="icons">
+            <input type="text" class="search-bar" placeholder="Search">
+            
+            <!-- Shopping Cart Icon -->
+            <i class="fas fa-shopping-cart"></i>
+        
+            <!-- User Dropdown -->
+            <li class="dropdown">
+                <a class="dropbtn">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="dropdown-item">LogOut</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+        </div>
+    </nav>
+
+    
+    <div class="sale-header">
+        <h1>Men</h1>
+    </div>
+
+    
+    <section class="product-section">
+        
+        <div class="product">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f28cf76a-0210-4ad7-a23b-69984a7c0d94/AIR+JORDAN+1+MID+SE.png" alt="Product 1">
+            <div class="product-info">
+                <h3>Air Jordan 1 Mid SE</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+
+        
+        <div class="product">
+            <img src="https://cdn.runrepeat.com/storage/gallery/product_content/37453/air-jordan-1-low-review-21512356-1080.jpg" alt="Product 2">
+            <div class="product-info">
+                <h3>Jordan 3 Retro "Black Cat"</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+
+        
+        <div class="product">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0018b668-4b83-4aff-84e1-50c082891289/JORDAN+3+RETRO+%28TD%29.png" alt="Product 3">
+            <div class="product-info">
+                <h3>Jordan 3 Retro "Black Cat"</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section">
+        
+        <div class="product">
+            <img src="https://caliber-kd-shoes.s3.ap-south-1.amazonaws.com/uploads/2025/02/17112557/678-Blk-Gry4.jpg" alt="Jordan 3 Retro Black Cat (PS)">
+            <div class="product-info">
+                <h3>Black/Grey High-Top Sneakers</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+
+        
+        <div class="product">
+            <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/5bd2dcdf-96b0-4a1f-88c8-21bb20370ed3/JORDAN+3+RETRO+%28PS%29.png" alt="Jordan 3 Retro Black Cat">
+            <div class="product-info">
+                <h3>Jordan 3 Retro "Black Cat" (PS)</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+
+        
+        <div class="product">
+            <img src="https://sothebys-md.brightspotcdn.com/9e/5c/d214849e4e1ba2786c021caf6a7a/741sneakers-c726n-t3-02.jpg" alt="Jordan 3 Retro Black Cat (PS)">
+            <div class="product-info">
+                <h3>Dior x Air Jordan 1 High</h3>
+                <a href="{% url 'accounts:product1' %}" class="explore-btn">Shop Now</a>  <!-- Adjust the URL -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- accounts/templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="background-texture">
+        <img src="{% static 'images/sbg.png' %}" alt="Background">
+    </div>
+    <div class="test" style ="margin-top:3%;
+    margin-left:40%;">
+    <h2 >Welcome to Show Me Shoe</h2>
+    <p><a style="color:red;" href="{% url 'signup' %}">Sign Up</a> or <a style="color:red;" href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html>
+
