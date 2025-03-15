@@ -16,12 +16,13 @@ from .views import (
     product2,
     shop,
     brands,
+    index
 
 )
 app_name = 'accounts'
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('', index, name='index'),
     path('signup/', signup, name='signup'),
     path('login/', login_view, name='login'),
     path('home/', home, name='home'),  
